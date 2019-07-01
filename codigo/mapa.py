@@ -154,7 +154,7 @@ class MoverPersonaje(probee.Accion):
             res = not mapa.hay_pared(p.icelda, p.jcelda, p.icelda, p.jcelda + 1) and not (celdas[p.icelda, p.jcelda+1]) == 1 and not (celdas[p.icelda, p.jcelda+1]) == 3
         if(self.direccion=="izquierda" and not p.jcelda == 0):
             res = not mapa.hay_pared(p.icelda, p.jcelda, p.icelda, p.jcelda - 1) and not (celdas[p.icelda, p.jcelda-1]) == 1 and not (celdas[p.icelda, p.jcelda-1]) == 3
-       
+        
         # MONSTRUO EN EL PROXIMO MOVIMIENTO
         if(res):
             next_mapa = copy.deepcopy(estado)
@@ -172,6 +172,15 @@ class MoverPersonaje(probee.Accion):
                 next_personaje.jcelda = p.jcelda - 1
             if(self.direccion == "derecha"):
                 next_personaje.jcelda = p.jcelda + 1
+                
+            # TELETRANSPORTE
+            if(mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 4):
+                for i in range(0,mapa.tamaño_ver()):
+                    for j in range(0,mapa.tamaño_hor()):
+                        if(mapa.celdas[i, j] == 4 and not (i == next_personaje.icelda and j == next_personaje.jcelda)):
+                            next_personaje.icelda = i
+                            next_personaje.jcelda = j
+                            break
                 
             for i in range(0,m.movimiento):
                 if(next_monstruo.stun > 0):
@@ -224,6 +233,15 @@ class MoverPersonaje(probee.Accion):
             next_personaje.jcelda = personaje.jcelda - 1
         if(self.direccion == "derecha"):
             next_personaje.jcelda = personaje.jcelda + 1
+            
+        # TELETRANSPORTE
+        if(mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 4):
+            for i in range(0,mapa.tamaño_ver()):
+                for j in range(0,mapa.tamaño_hor()):
+                    if(mapa.celdas[i, j] == 4 and not (i == next_personaje.icelda and j == next_personaje.jcelda)):
+                        next_personaje.icelda = i
+                        next_personaje.jcelda = j
+                        break
             
         if(not (mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 2)):
             for i in range(0,monstruo.movimiento):
@@ -292,6 +310,15 @@ class MoverPersonaje2(probee.Accion):
             next_personaje.jcelda = next_personaje.jcelda + 1
         
         if(res and not mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 2):
+            # TELETRANSPORTE
+            if(mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 4):
+                for i in range(0,mapa.tamaño_ver()):
+                    for j in range(0,mapa.tamaño_hor()):
+                        if(mapa.celdas[i, j] == 4 and not (i == next_personaje.icelda and j == next_personaje.jcelda)):
+                            next_personaje.icelda = i
+                            next_personaje.jcelda = j
+                            break            
+            
             # MONSTRUO 1 Y 2 EN EL PROXIMO MOVIMIENTO
             i_actual_monstruo1 = m1.icelda
             j_actual_monstruo1 = m1.jcelda
@@ -370,6 +397,15 @@ class MoverPersonaje2(probee.Accion):
             next_personaje.jcelda = personaje.jcelda - 1
         if(self.direccion == "derecha"):
             next_personaje.jcelda = personaje.jcelda + 1
+            
+        # TELETRANSPORTE
+        if(mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 4):
+            for i in range(0,mapa.tamaño_ver()):
+                for j in range(0,mapa.tamaño_hor()):
+                    if(mapa.celdas[i, j] == 4 and not (i == next_personaje.icelda and j == next_personaje.jcelda)):
+                        next_personaje.icelda = i
+                        next_personaje.jcelda = j
+                        break
             
         if(not (mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 2)):
             # MONSTRUO 1 Y 2 EN EL PROXIMO MOVIMIENTO

@@ -75,6 +75,7 @@ class Script():
                 self.preguntarMonstruo()
                 self.preguntarAñadirOtroMonstruo()
                 self.preguntarArdiente()
+                self.preguntarTeletransporte()
                 self.preguntarPared()
             else:
                 print("Valor incorrecto.\n")
@@ -1260,6 +1261,71 @@ class Script():
         except ValueError:
             print("\nEntrada incorrecta.\n")
             self.preguntarPared()
+            
+    def preguntarTeletransporte(self):
+        print("¿Quieres añadir un par de teletransportes?")
+        res = input("Responda 1 para añadir una o 2 para continuar: ")
+        print("\n---")
+        
+        try:
+            res = int(res)
+            
+            if(res == 1):
+                
+                print("\n¿Cual es la fila del primer teletransporte?")
+                res = input("Responda con un número: ")
+                print("\n---")
+                res = int(res)
+                
+                if(res >= 0 and res < self.filas):
+                    fila1 = res
+                    print("\n¿Y la columna?")
+                    res = input("Responda con un número: ")
+                    print("\n---")
+                    
+                    res = int(res)
+                    
+                    if(res >= 0 and res < self.columnas):
+                        columna1 = res
+                        
+                        print("\n¿Cual es la fila del segundo teletransporte?")
+                        res = input("Responda con un número: ")
+                        print("\n---")
+                        res = int(res)
+                        
+                        if(res >= 0 and res < self.filas):
+                            fila2 = res
+                            print("\n¿Y la columna?")
+                            res = input("Responda con un número: ")
+                            print("\n---")
+                            
+                            res = int(res)
+                            
+                            if(res >= 0 and res < self.columnas):
+                                columna2 = res
+                                
+                                self.celdas[fila1, columna1] = 4
+                                self.celdas[fila2, columna2] = 4
+                            else:
+                                print("\nEl teletransporte no puede estar fuera del mapa.\n")
+                                self.preguntarTeletransporte()
+                        else:
+                            print("\nEl teletransporte no puede estar fuera del mapa.\n")
+                            self.preguntarTeletransporte()
+                    else:
+                        print("\nEl teletransporte no puede estar fuera del mapa.\n")
+                        self.preguntarTeletransporte()
+                else:
+                    print("\nEl teletransporte no puede estar fuera del mapa.\n")
+                    self.preguntarTeletransporte()
+            elif(res == 2):
+                print("\nNo se ha añadido el teletransporte.\n")
+            else:
+                print("\nValor incorrecto.\n")
+                self.preguntarTeletransporte()
+        except ValueError:
+            print("\nEntrada incorrecta.\n")
+            self.preguntarTeletransporte()
             
     def preguntarAlgoritmo(self):
         explicacion = ""
