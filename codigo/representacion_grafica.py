@@ -45,13 +45,13 @@ class representation:
                     c3 = '|P   P|'
                     c4 = '.-----.'
                 if hasattr(mapa, 'monstruo'):
-                    if(mapa.monstruo.icelda==i and mapa.monstruo.jcelda==j):
+                    if(mapa.monstruo.icelda==i and mapa.monstruo.jcelda==j and mapa.monstruo.vivo):
                         c1 = '.-----.'
                         c2 = '|M   M|'
                         c3 = '|M   M|'
                         c4 = '.-----.'
                 else:
-                    if((mapa.monstruo1.icelda==i and mapa.monstruo1.jcelda==j) or (mapa.monstruo2.icelda==i and mapa.monstruo2.jcelda==j)):
+                    if((mapa.monstruo1.icelda==i and mapa.monstruo1.jcelda==j and mapa.monstruo1.vivo) or (mapa.monstruo2.icelda==i and mapa.monstruo2.jcelda==j and mapa.monstruo2.vivo)):
                         c1 = '.-----.'
                         c2 = '|M   M|'
                         c3 = '|M   M|'
