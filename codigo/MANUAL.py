@@ -16,6 +16,8 @@ from time import time
 # 1 -> Ardiente
 # 2 -> Objetivo
 # 3 -> Inaccesible
+# 4 -> Teletransporte
+# 5 -> Fuego
 
 """ MAPAS """
 

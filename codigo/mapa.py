@@ -120,7 +120,7 @@ class Monstruo:
     def __init__(self, i, j):
         self.icelda = i
         self.jcelda = j
-        self.tipo = 0
+        self.vivo = True
         self.stun = 0
         self.movimiento = 2
         

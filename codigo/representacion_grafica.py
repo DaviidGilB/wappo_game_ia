@@ -34,6 +34,11 @@ class representation:
                     c2 = '|T   T|'
                     c3 = '|T   T|'
                     c4 = '.-----.'
+                if(mapa.celdas[i][j]==5):
+                    c1 = '.-----.'
+                    c2 = '|F   F|'
+                    c3 = '|F   F|'
+                    c4 = '.-----.'
                 if(mapa.personaje.icelda==i and mapa.personaje.jcelda==j):
                     c1 = '.-----.'
                     c2 = '|P   P|'
