@@ -178,10 +178,14 @@ class MoverPersonaje(probee.Accion):
                 for i in range(0,mapa.tamaño_ver()):
                     for j in range(0,mapa.tamaño_hor()):
                         if(mapa.celdas[i, j] == 4 and not (i == next_personaje.icelda and j == next_personaje.jcelda)):
-                            next_personaje.icelda = i
-                            next_personaje.jcelda = j
+                            if(next_personaje.icelda == next_monstruo.icelda and next_personaje.jcelda == next_monstruo.jcelda):
+                                res = False
+                            else:
+                                next_personaje.icelda = i
+                                next_personaje.jcelda = j
                             break
                 
+        if(res):
             for i in range(0,m.movimiento):
                 if(next_monstruo.stun > 0):
                     break
@@ -315,10 +319,14 @@ class MoverPersonaje2(probee.Accion):
                 for i in range(0,mapa.tamaño_ver()):
                     for j in range(0,mapa.tamaño_hor()):
                         if(mapa.celdas[i, j] == 4 and not (i == next_personaje.icelda and j == next_personaje.jcelda)):
-                            next_personaje.icelda = i
-                            next_personaje.jcelda = j
-                            break            
+                            if((next_personaje.icelda == next_monstruo1.icelda and next_personaje.jcelda == next_monstruo1.jcelda) or (next_personaje.icelda == next_monstruo2.icelda and next_personaje.jcelda == next_monstruo2.jcelda)):
+                                res = False
+                            else:
+                                next_personaje.icelda = i
+                                next_personaje.jcelda = j
+                            break           
             
+        if(res and not mapa.celdas[next_personaje.icelda, next_personaje.jcelda] == 2):
             # MONSTRUO 1 Y 2 EN EL PROXIMO MOVIMIENTO
             i_actual_monstruo1 = m1.icelda
             j_actual_monstruo1 = m1.jcelda
